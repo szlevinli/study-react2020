@@ -67,7 +67,37 @@ node_modules/.bin/eslint --init
 
 ### Install eslint-plugin-testing-library
 
+- add package
+
+```bash
+yarn add eslint-plugin-testing-library --dev
+```
+
+- 在 `.eslintrc.json` 文件中增加如下内容
+
+```json
+{
+  "plugins": ["testing-library"],
+  "extends": ["plugin:testing-library/recommended"]
+}
+```
+
 ### Install eslint-plugin-jest-dom
+
+- add package
+
+```bash
+yarn add eslint-plugin-jest-dom --dev
+```
+
+- 在 `.eslintrc.json` 文件中增加如下内容
+
+```json
+{
+  "plugins": ["jest-dom"],
+  "extends": ["plugin:jest-dom/recommended"]
+}
+```
 
 ## 基本路由设置
 
