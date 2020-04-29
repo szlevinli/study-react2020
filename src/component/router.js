@@ -9,7 +9,9 @@ const Router = ({ routeObjects }) => {
   ));
 
   const routes = routeObjects.map((route) => (
-    <Route path={route.pathName}>route.routeComponent</Route>
+    <Route path={route.pathName} key={route.pathName}>
+      route.routeComponent
+    </Route>
   ));
 
   return (
