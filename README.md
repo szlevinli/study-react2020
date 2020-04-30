@@ -82,6 +82,24 @@ yarn add eslint-plugin-testing-library --dev
 }
 ```
 
+### Install @types/jest
+
+安装了这个包后, 在单元测试代码中输入 `expect().` 就会弹出各种方法了
+
+```bash
+yarn add @types/jest --dev
+```
+
+同时在项目根目录创建 `jsconfig.json` 文件
+
+```json
+{
+  "typeAcquisition": {
+    "include": ["jest"]
+  }
+}
+```
+
 ### Install eslint-plugin-jest-dom
 
 - add package
@@ -171,6 +189,23 @@ Map {
 ### 进行单元测试
 
 建议使用命令行进行单元测试, 因为使用 **jest-vscode** 扩展 `console.log` 无法输出出来.
+
+### FAQ
+
+- eslint 报错: 'test is not defined'
+  - 在 `.eslintrc` 文件中增加
+
+```json
+"env": { "jest": true }
+```
+
+- 运行 `yarn test` 报错: Error: ENOSPC: System limit for number of file watchers reached
+  - 执行如下命令在操作系统 shell 中
+
+```bash
+echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf
+sudo sysctl -p
+```
 
 ## 基本路由设置
 
