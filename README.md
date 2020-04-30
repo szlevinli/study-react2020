@@ -99,6 +99,79 @@ yarn add eslint-plugin-jest-dom --dev
 }
 ```
 
+### Setup
+
+- 创建 `src/setupTests.js`
+
+```javascript
+import '@testing-library/jest-dom/extend-expect';
+```
+
+### Queries
+
+[testing libray](https://testing-library.com/) 提供了 **3** 种类型 DOM element 的查询
+
+- getBy: 返回匹配到的第一个匹配到的元素(`if` find=0 or find>1`then` throws error)
+- queryBy: 返回匹配到的第一个匹配到的元素(`if` find=0 `then` return null `else if` find>1 `then` throws error)
+- findBy: 返回一个 **promise** 当匹配到的一个元素(也就是说这个方法采用的是异步方式). 默认的超时 **1000 ms**.
+
+上面三种方式返回一个匹配的元素, 匹配多个元素配套的提供了以下三种
+
+- getAllBy: 返回匹配到的元素的数组(`if` find=0 `then` throws error)
+- queryAllBy: 返回匹配到的元素的数组(no error throws)
+- findAllBy: 返回一个 **promise** 当匹配到的元素的数组(也就是说这个方法采用的是异步方式). 默认的超时 **1000 ms**.
+
+### Elements to Roles
+
+```javascript
+Map {
+  '{"name": "article"}' => Set { 'article' },
+  '{"name": "button"}' => Set { 'button' },
+  '{"name": "td"}' => Set { 'cell', 'gridcell' },
+  '{"name": "input", "attributes": [ {"name": "type", "value": "checkbox"}] }' => Set { 'checkbox' },
+  '{"name": "th"}' => Set { 'columnheader' },
+  '{"name": "select"}' => Set { 'combobox', 'listbox' },
+  '{"name": "menuitem"}' => Set { 'command', 'menuitem' },
+  '{"name": "dd"}' => Set { 'definition' },
+  '{"name": "dfn"}' => Set { 'definition' },
+  '{"name": "figure"}' => Set { 'figure' },
+  '{"name": "form"}' => Set { 'form' },
+  '{"name": "table"}' => Set { 'grid', 'table' },
+  '{"name": "fieldset"}' => Set { 'group' },
+  '{"name": "h1"}' => Set { 'heading' },
+  '{"name": "h2"}' => Set { 'heading' },
+  '{"name": "h3"}' => Set { 'heading' },
+  '{"name": "h4"}' => Set { 'heading' },
+  '{"name": "h5"}' => Set { 'heading' },
+  '{"name": "h6"}' => Set { 'heading' },
+  '{"name": "img"}' => Set { 'img' },
+  '{"name": "a"}' => Set { 'link' },
+  '{"name": "link"}' => Set { 'link' },
+  '{"name": "ol"}' => Set { 'list' },
+  '{"name": "ul"}' => Set { 'list' },
+  '{"name": "li"}' => Set { 'listitem' },
+  '{"name": "nav"}' => Set { 'navigation' },
+  '{"name": "option"}' => Set { 'option' },
+  '{"name": "input", "attributes": [ {"name": "type", "value": "radio"}] }' => Set { 'radio' },
+  '{"name": "frame"}' => Set { 'region' },
+  '{"name": "rel"}' => Set { 'roletype' },
+  '{"name": "tr"}' => Set { 'row' },
+  '{"name": "tbody"}' => Set { 'rowgroup' },
+  '{"name": "tfoot"}' => Set { 'rowgroup' },
+  '{"name": "thead"}' => Set { 'rowgroup' },
+  '{"name": "th", "attributes": [ {"name": "scope", "value": "row"}] }' => Set { 'rowheader' },
+  '{"name": "input", "attributes": [ {"name": "type", "value": "search"}] }' => Set { 'searchbox' },
+  '{"name": "hr"}' => Set { 'separator' },
+  '{"name": "dt"}' => Set { 'term' },
+  '{"name": "textarea"}' => Set { 'textbox' },
+  '{"name": "input", "attributes": [ {"name": "type", "value": "text"}] }' => Set { 'textbox' }
+}
+```
+
+### 进行单元测试
+
+建议使用命令行进行单元测试, 因为使用 **jest-vscode** 扩展 `console.log` 无法输出出来.
+
 ## 基本路由设置
 
 - 在 `component` 目录下创建 `router.js` 文件
