@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route, Link } from 'react-router-dom';
 
 const Router = ({ routeObjects }) => {
   const links = routeObjects.map((route) => (
@@ -16,7 +16,7 @@ const Router = ({ routeObjects }) => {
   ));
 
   return (
-    <BrowserRouter>
+    <>
       <div>
         <nav>
           <ul>{links}</ul>
@@ -24,7 +24,7 @@ const Router = ({ routeObjects }) => {
       </div>
 
       <Switch>{routes}</Switch>
-    </BrowserRouter>
+    </>
   );
 };
 
