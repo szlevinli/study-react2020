@@ -20,11 +20,37 @@ const mockRouteObjects = [
   { pathName: '/', displayName: 'Home', routeComponent: MockHome },
 ];
 
-test('smoking test', () => {
-  const { debug } = render(
+it('smoking test', () => {
+  render(
+    <MemoryRouter>
+      <Router routeObjects={mockRouteObjects}></Router>
+    </MemoryRouter>
+  );
+});
+
+it('should render 2 <li> elements', () => {
+  const { getAllByRole } = render(
+    <MemoryRouter>
+      <Router routeObjects={mockRouteObjects}></Router>
+    </MemoryRouter>
+  );
+  expect(getAllByRole('listitem').length).toBe(2);
+});
+
+it('should render text "Home"', () => {
+  const { getByRole } = render(
+    <MemoryRouter>
+      <Router routeObjects={mockRouteObjects}></Router>
+    </MemoryRouter>
+  );
+  expect(getByRole('heading')).toHaveTextContent('Home');
+});
+
+it('should render text "Other"', () => {
+  const { getByRole } = render(
     <MemoryRouter initialEntries={['/other']}>
       <Router routeObjects={mockRouteObjects}></Router>
     </MemoryRouter>
   );
-  debug();
+  expect(getByRole('heading')).toHaveTextContent('Other');
 });
