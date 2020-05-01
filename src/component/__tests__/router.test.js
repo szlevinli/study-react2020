@@ -34,7 +34,13 @@ it('should render 2 <li> elements', () => {
       <Router routeObjects={mockRouteObjects}></Router>
     </MemoryRouter>
   );
-  expect(getAllByRole('listitem').length).toBe(2);
+  const listItmes = getAllByRole('listitem');
+  expect(listItmes.length).toBe(2);
+  const links = getAllByRole('link');
+  expect(links[0]).toHaveAttribute('href', '/other');
+  expect(links[1]).toHaveAttribute('href', '/');
+  expect(links[0]).toHaveTextContent('Other');
+  expect(links[1]).toHaveTextContent('Home');
 });
 
 it('should render text "Home"', () => {
