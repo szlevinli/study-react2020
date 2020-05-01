@@ -11,7 +11,7 @@ const Router = ({ routeObjects }) => {
 
   const routes = routeObjects.map((route) => (
     <Route path={route.pathName} key={route.pathName}>
-      {route.routeComponent}
+      {<route.routeComponent></route.routeComponent>}
     </Route>
   ));
 
