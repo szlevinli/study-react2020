@@ -9,7 +9,8 @@
     "plugin:react/recommended",
     "plugin:testing-library/recommended",
     "plugin:jest-dom/recommended",
-    "plugin:jest/recommended"
+    "plugin:jest/recommended",
+    "plugin:react-hooks/recommended"
   ],
   "globals": {
     "Atomics": "readonly",
@@ -22,6 +23,6 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": ["react", "testing-library", "jest-dom"],
+  "plugins": ["react", "testing-library", "jest-dom", "jest", "react-hooks"],
   "rules": {}
 }
