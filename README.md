@@ -49,6 +49,23 @@ node_modules/.bin/eslint --init
 }
 ```
 
+### Install eslint-plugin-react-hooks
+
+- add package
+
+```bash
+yarn add eslint-plugin-react-hooks --dev
+```
+
+- 在 `.eslintrc.json` 文件中增加如下内容
+
+```json
+{
+  "plugins": ["react-hooks"],
+  "extends": ["plugin:react-hooks/recommended"]
+}
+```
+
 ## Unit Test
 
 单元测试方面, 采用 [Create React App](https://create-react-app.dev/) 自带的单元测试环境
@@ -64,6 +81,23 @@ node_modules/.bin/eslint --init
 - ESLint plugin for Jest DOM: [eslint-plugin-jest-dom](https://github.com/testing-library/eslint-plugin-jest-dom)
 
 以上的包只有最后两个关于 Eslint plugin 的包没有被 [Create React App](https://create-react-app.dev/) 自动安装, 因此我们需要自行安装他们.
+
+### Install eslint-plugin-jest
+
+- add package
+
+```bash
+yarn add eslint-plugin-jest --dev
+```
+
+- 在 `.eslintrc.json` 文件中增加如下内容
+
+```json
+{
+  "plugins": ["jest"],
+  "extends": ["plugin: jest/recommended"]
+}
+```
 
 ### Install eslint-plugin-testing-library
 
@@ -190,6 +224,10 @@ Map {
 
 建议使用命令行进行单元测试, 因为使用 **jest-vscode** 扩展 `console.log` 无法输出出来.
 
+## 基本路由设置
+
+- 在 `component` 目录下创建 `router.js` 文件
+
 ### FAQ
 
 - eslint 报错: 'test is not defined'
@@ -207,6 +245,13 @@ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf
 sudo sysctl -p
 ```
 
-## 基本路由设置
+- `Emmet` 不起作用
+  - 在 `settings.json` 文件中输入如下内容
 
-- 在 `component` 目录下创建 `router.js` 文件
+```json
+{
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  }
+}
+```
