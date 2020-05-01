@@ -1,7 +1,9 @@
+/* eslint-disable jest/no-disabled-tests */
+/* eslint-disable jest/expect-expect */
 import React from 'react';
 import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import Router from '../router';
+import Router from '../Router';
 
 const MockHome = () => (
   <div>
@@ -19,6 +21,15 @@ const mockRouteObjects = [
   { pathName: '/other', displayName: 'Other', routeComponent: MockOther },
   { pathName: '/', displayName: 'Home', routeComponent: MockHome },
 ];
+
+it.skip('should debug output', () => {
+  const { debug } = render(
+    <MemoryRouter>
+      <Router routeObjects={mockRouteObjects}></Router>
+    </MemoryRouter>
+  );
+  debug();
+});
 
 it('smoking test', () => {
   render(
