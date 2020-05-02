@@ -228,7 +228,78 @@ Map {
 
 - 在 `component` 目录下创建 `router.js` 文件
 
-### FAQ
+## React Context
+
+- 创建文件用于描述 `Context`, ***src/component/context/theme-context.js***
+
+```javascript
+export const themes = {
+  light: {
+    foreground: '#000000',
+    background: '#eeeeee',
+  },
+  dark: {
+    foreground: '#ffffff',
+    background: '#222222',
+  },
+};
+
+export const ThemeContext = React.createContext(
+  themes.dark // default value
+);
+```
+
+- 使用 `Context`, ***src/component/context/themed-button.js***
+
+```javascript
+import React, { useContext } from 'react';
+import { ThemeContext } from './theme-context';
+
+const ThemedButton = (props) => {
+  let theme = useContext(ThemeContext);
+
+  return <button {...props} style={{ backgroundColor: theme.background }} />;
+};
+
+export default ThemedButton;
+```
+
+- 提供 `Context`, ***src/component/context/index.js***
+
+```javascript
+import React, { useState } from 'react';
+import { ThemeContext, themes } from './theme-context';
+import Toolbar from './toolbar';
+import ThemedButton from './themed-button';
+
+const ContextComponent = () => {
+  const [theme, setTheme] = useState(themes.light);
+
+  const toggleTheme = () => {
+    setTheme(theme === themes.light ? themes.dark : themes.light);
+  };
+
+  return (
+    <article>
+      <h1>Context</h1>
+      <ThemeContext.Provider value={theme}>
+        <Toolbar changeTheme={toggleTheme}></Toolbar>
+      </ThemeContext.Provider>
+      <section>
+        <ThemedButton>unchange theme</ThemedButton>
+      </section>
+    </article>
+  );
+};
+
+export default ContextComponent;
+```
+
+### Updating Context from a Nested Component
+
+在上面的范例中, 对 `Context` 更新是在"提供者"(Provider)代码中, 即上面的 ***src/component/context/index.js*** 文件中, 但有些场景下对 `Context` 的更新可能会在嵌套组件内, 甚至是 `Context` 的"消费者"(Consumer)代码中
+
+## FAQ
 
 - eslint 报错: 'test is not defined'
   - 在 `.eslintrc` 文件中增加
