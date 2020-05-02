@@ -12,6 +12,7 @@ const ContextComponent = () => {
 
   return (
     <article>
+      <h1>Context</h1>
       <ThemeContext.Provider value={theme}>
         <Toolbar changeTheme={toggleTheme}></Toolbar>
       </ThemeContext.Provider>
