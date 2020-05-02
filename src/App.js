@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
-import Router from './component/Router';
+import LinkComponent from './component/LinkComponent';
+import RouteCompnent from './component/RouteCompnent';
 import routers from './component/routers';
 
 import { BrowserRouter } from 'react-router-dom';
@@ -8,12 +9,14 @@ import { BrowserRouter } from 'react-router-dom';
 function App() {
   return (
     <div className='App'>
-      <header>
-        <BrowserRouter>
-          <Router routeObjects={routers}></Router>
-        </BrowserRouter>
-      </header>
-      <section>Section</section>
+      <BrowserRouter>
+        <header>
+          <LinkComponent routeObjects={routers}></LinkComponent>
+        </header>
+        <section>
+          <RouteCompnent routeObjects={routers}></RouteCompnent>
+        </section>
+      </BrowserRouter>
       <footer>Footer</footer>
     </div>
   );
