@@ -4,8 +4,8 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import { mockRouteObjects } from '../mocks/mockObjects';
-import RouteCompnent from '../RouteCompnent';
+import { mockRouteObjects } from './mocks/mockObjects';
+import RouteCompnent from './RouteCompnent';
 
 const MockComponent = ({ initEntry }) => (
   <MemoryRouter initialEntries={initEntry}>

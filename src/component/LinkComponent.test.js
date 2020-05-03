@@ -3,8 +3,8 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import { mockRouteObjects } from '../mocks/mockObjects';
-import LinkComponent from '../LinkComponent';
+import { mockRouteObjects } from './mocks/mockObjects';
+import LinkComponent from './LinkComponent';
 
 const MockComponent = () => (
   <MemoryRouter>
