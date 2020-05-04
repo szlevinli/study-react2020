@@ -297,7 +297,35 @@ export default ContextComponent;
 
 ### Updating Context from a Nested Component
 
-在上面的范例中, 对 `Context` 更新是在"提供者"(Provider)代码中, 即上面的 ***src/component/context/index.js*** 文件中, 但有些场景下对 `Context` 的更新可能会在嵌套组件内, 甚至是 `Context` 的"消费者"(Consumer)代码中
+在上面的范例中, 对 `Context` 更新是在"提供者"(Provider)代码中, 即上面的 ***src/component/context/index.js*** 文件中, 并通过 `props` 明确的向下传递（比如：上面的通过 `onClick` 属性向下传递）, 我们也可以不这么做，而是将更新/改变 `Context` 的功能直接声明在 `Context` 中，采用“占位符”的方式
+
+```javascript
+export const ThemeContext = React.createContext({
+  theme: themes.dark, // default value
+  toggleTheme: () => {},
+});
+```
+
+然后在 `Context` 更新是在"提供者"(Provider)代码中对“占位符”进行绑定
+
+```javascript
+const ContextWithNestedUpdateComponent = () => {
+  const [theme, setTheme] = useState(themes.light);
+
+  const toggleTheme = () => {
+    setTheme(theme === themes.light ? themes.dark : themes.light);
+  };
+
+  return (
+    <article>
+      <h1>Context</h1>
+      <ThemeContext.Provider value={{ theme, toggleTheme }}>
+        <ThemedTogglerButton />
+      </ThemeContext.Provider>
+    </article>
+  );
+};
+```
 
 ## FAQ
 
