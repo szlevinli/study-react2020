@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should be render correctly 1`] = `
+<div>
+  <button
+    style="background-color: rgb(238, 238, 238);"
+  >
+    Toggle Theme
+  </button>
+</div>
+`;
